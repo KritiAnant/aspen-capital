@@ -34,8 +34,8 @@ def lambda_handler(event, context):
 
     s3 = boto3.client(
         's3',
-        aws_access_key_id='AKIARQWNMHB5GCUWG22K',
-        aws_secret_access_key='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'
+        aws_access_key_id='*********',
+        aws_secret_access_key='**************'
     )
 
     # In[3]:
