@@ -1,3 +1,4 @@
 requests
 pandas
 s3fs
+openpyxl

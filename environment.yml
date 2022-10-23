@@ -19,10 +19,11 @@
 name: aws-micro-etl
 
 dependencies:
-  - python=3.8
+  - python=3.9
   - pandas
   - jupyterlab
   - matplotlib
+  - openpyxl
   - s3fs
   - pip
   - pip:
