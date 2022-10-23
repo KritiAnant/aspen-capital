@@ -5,7 +5,7 @@
 ## Requirements 
 - ETL process to match this target data model - https://dbdiagram.io/d/62268eff61d06e6eadbc43bc
   - Given the limited time, I completed the normalization of data in the file using lambda for tables user, user_profile, role_profile and role_profile_type, with the understanding that these could be extended for the remaining tables in the data model. 
-  - The reason I chose lambda is because the file is small in size. Depending on the use case, I would recommend a different solution.
+  - The reason I chose lambda is because the file is small in size. Depending on the size and set up, I would recommend a different solution.
   - I scheduled the lambda to run every 15 minutes (an assumption). Again, depending on the use case my answer changes.
   - I made some assumptions about what could go in some of the incrementing primary keys given the limited scope and time as well as certain columns like updated, updated by and created, created_by.
   - [Code](aws_micro_etl_sample.ipynb): I stored the resulting dataframes for these tables as CSV files in separate S3 buckets, so that it would be easier to connect with Athena for querying and AWS Glue for ETL to conform to any constraints or tranformations that may be necessary.
@@ -31,8 +31,10 @@ For this we would need:
 1. To create an SQL Server Database Instance in Amazon RDS.
 2. Create a replication instance in DMS.
 3. Create source and target endpoints for the migration.
-4. Create a replication task: I would recommend a single task of full load plus CDC for the simplicity but since replication on both on-prem and AWS is desirable, we would have to create bidirectional replication tasks from the SQL Server instance to the RDS instance. This can be done by:
-    (i)
+4. Create replication tasks: I would recommend a single task of full load plus CDC for the simplicity but since replication on both on-prem and AWS is desirable, we would have to create bidirectional replication tasks from the SQL Server instance to the RDS instance. This can be done by:
+   - Creating a full load + CDC task from SQL Server to RDS.
+   - Creating a CDC only task from RDS to SQL Server starting from the time before applications could make changes to RDS.
+   - Loopback prevention settings to prevent corruption.
 
 
 
