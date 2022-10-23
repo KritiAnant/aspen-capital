@@ -2,3 +2,5 @@
 samconfig.toml
 .aws-sam
 .DS_Store
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
