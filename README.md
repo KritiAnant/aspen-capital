@@ -18,10 +18,22 @@
 - AWS Lambda: for micro-ETL
 - AWS SAM: for building the environment, and scheduling the Lambda handler
 - AWS Athena: to query resulting CSVs
-- AWS Glue: just to test out inserting rows into tables
+- AWS Glue: to test out inserting rows into tables.
 
 
 To review these, I am happy to share my screen during the interview or provide access to specific people on an ad-hoc basis. Currently, I have deleted some of the resources to avoid accidentally incurring charges.
+
+## Recommended solution for database migration from on prem:
+Since the source database is hosted on SQL Server and not a few Excel files, my code is not the solution. 
+I recommend using AWS Database Migration Service to migrate to RDS, which the team may already be using.
+
+For this we would need:
+1. To create an SQL Server Database Instance in Amazon RDS.
+2. Create a replication instance in DMS.
+3. Create source and target endpoints for the migration.
+4. Create a replication task: I would recommend a single task of full load plus CDC for the simplicity but since replication on both on-prem and AWS is desirable, we would have to create bidirectional replication tasks from the SQL Server instance to the RDS instance. This can be done by:
+    (i)
+
 
 
 ## License
