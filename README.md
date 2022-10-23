@@ -20,7 +20,7 @@
 - AWS Lambda: for micro-ETL
 - AWS SAM: for building the environment, and scheduling the Lambda handler
 - AWS Athena: to query resulting CSVs
-- AWS Glue: to test out inserting rows into tables.
+- AWS Glue: to test out inserting rows into tables from the CSVs.
 
 
 To review these, I am happy to share my screen during the interview or provide access to specific people on an ad-hoc basis. Currently, I have deleted some of the resources (such as the cloud formation stack for the cron job) to avoid accidentally incurring charges, but I can deploy them to demonstrate my understanding back again. 
