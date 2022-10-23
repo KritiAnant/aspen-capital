@@ -19,6 +19,8 @@
 - AWS SAM: for building the environment, and scheduling the Lambda handler
 - AWS Athena: to query resulting CSVs
 - AWS Glue: just to test out inserting rows into tables
+
+
 To review these, I am happy to share my screen during the interview or provide access to specific people on an ad-hoc basis. Currently, I have deleted some of the resources to avoid accidentally incurring charges.
 
 
