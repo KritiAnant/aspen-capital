@@ -21,11 +21,11 @@ Resources:
       Runtime: python3.9
       Environment:
          Variables:
-           S3Bucket: 'aspen-capital-clean-data'
+           S3Bucket: '*'
            LogLevel: INFO
       Policies:
         - S3WritePolicy: 
-            BucketName: 'aspen-capital-clean-data'
+            BucketName: '*'
       Events:
         UpdateEvent:
           Type: Schedule
