@@ -1,10 +1,9 @@
 # AWS Micro ETL pipeline
 
-This repository contains code to help you process and periodically refresh a small amount of data coming from one or more sources.  
-
-In addition, you will be able to configure a Python environment to build and deploy your own micro ETL pipeline using your own source of data.
-
-The complete solution includes: AWS Lambda to handle the micro ETL process, an Amazon S3 bucket to store the processed data a local Jupyter notebook to inspect the data and the AWS SAM cli to build and deploy the pipeline.
+This project has been completed using the following AWS Free Tier offerings:
+- AWS Lambda
+- AWS SAM
+- 
 
 ## Prerequisites
 For this walkthrough, you should have the following prerequisites:
