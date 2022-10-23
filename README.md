@@ -10,7 +10,7 @@
   - I made some assumptions about what could go in some of the incrementing primary keys given the limited scope and time as well as certain columns like updated, updated by and created, created_by.
   - I stored the resulting dataframes for these tables as CSV files in separate S3 buckets, so that it would be easier to connect with Athena for querying and AWS Glue for ETL to conform to any constraints or tranformations that may be necessary.
   
-
+- [Diagram](Kriti-Aspen-capital.png)
 
 
 ## AWS Free Tier offerings used:
