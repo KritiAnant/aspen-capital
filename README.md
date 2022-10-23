@@ -10,7 +10,7 @@
   - I made some assumptions about what could go in some of the incrementing primary keys given the limited scope and time as well as certain columns like updated, updated by and created, created_by.
   - I stored the resulting dataframes for these tables as CSV files in separate S3 buckets, so that it would be easier to connect with Athena for querying and AWS Glue for ETL to conform to any constraints or tranformations that may be necessary.
   
-- Diagram
+- Diagram:
 ![Diagram](Kriti-Aspen-capital.png)
 - [Code](aws_micro_etl_sample.ipynb)
 
@@ -25,7 +25,7 @@
 
 To review these, I am happy to share my screen during the interview or provide access to specific people on an ad-hoc basis. Currently, I have deleted some of the resources (such as the cloud formation stack for the cron job) to avoid accidentally incurring charges, but I can deploy them to demonstrate my understanding back again. 
 
-Challenges:
+#### Challenges:
 - Converting the Excel file to CSV in AWS to make them readable by Athena and Glue.
 - I also avoided using anything that does not come for free with the free tier, and had to find workarounds for that.
 
