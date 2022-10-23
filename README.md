@@ -23,26 +23,24 @@
 - AWS Glue: to test out inserting rows into tables from the CSVs.
 
 
-To review these, I am happy to share my screen during the interview or provide access to specific people on an ad-hoc basis. Currently, I have deleted some of the resources (such as the cloud formation stack for the cron job) to avoid accidentally incurring charges, but I can deploy them to demonstrate my understanding back again. 
+To review these, I am happy to share my screen during the interview or provide access to specific people on an ad-hoc basis. Currently, I have deleted some of the resources (such as the cloud formation stack) to avoid accidentally incurring charges, but I can deploy them to demonstrate my understanding again. 
 
 #### Challenges:
-- Converting the Excel file to CSV in AWS to make them readable by Athena and Glue.
-- I also avoided using anything that does not come for free with the free tier, and had to find workarounds for that.
+- Converting the Excel file to CSV in AWS Lambda (it does not natively support openpyxl or pandas) to make them readable by Athena and Glue.
+- I also avoided using anything that does not come for free with the free tier (such as RDS instances), and had to find workarounds for that.
 
 ## Recommended solution for database migration from on prem:
-My code works for any excel files uploaded to S3 and ETLed at intervals. Since I had a static file, I took these liberties to implement a solution for the data the way I see fit. But since the source database is hosted on SQL Server and not a few Excel files, my code is not the solution for the migration task at hand. 
+My code works for any excel files uploaded to S3 and ETLed at intervals. Since I had a static file, I took these liberties to implement a solution for the data the way I see fit. But since the source database is hosted on an SQL Server instance and not a few Excel files, my code is not the solution for the migration task at hand. 
 I recommend using AWS Database Migration Service to migrate to RDS, which the team may already be considering.
 
-For this we would need:
-1. To create an SQL Server Database Instance in Amazon RDS.
+For this we would need to:
+1. Create an SQL Server Database Instance in Amazon RDS.
 2. Create a replication instance in DMS.
 3. Create source and target endpoints for the migration.
 4. Create replication tasks: I would recommend a single task of full load plus CDC for the simplicity and hastiness but since replication on both on-prem and AWS is desirable, we would have to create bidirectional replication tasks from the SQL Server instance to the RDS instance. This can be done by:
    - Creating a full load + CDC task from SQL Server to RDS.
    - Creating a CDC only task from RDS to SQL Server starting from the time before applications could make changes to RDS.
    - Loopback prevention settings to prevent corruption.
-5. Test and switchover.
-6. Delete DMS resources.
 
 
 ## License
