@@ -1,26 +1,26 @@
 # AWS Micro ETL pipeline
 
-This project has been completed using the following AWS Free Tier offerings:
-- AWS Lambda
-- AWS SAM
-- 
-
-## Prerequisites
-For this walkthrough, you should have the following prerequisites:
-
-- An [AWS account](https://aws.amazon.com/)
-- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) installed and configured
-- [Python](https://www.python.org/downloads/) (3.8 preferable)
-- [Conda o Miniconda](https://docs.conda.io)
 
 
-## What’s a micro ETL pipeline? 
-It is a short process that you can schedule frequently to handle a small volume of data.  Sometimes, you need to ingest, transform and load only a subset of a larger dataset without using expensive and complex computational resources, that’s where the notion of micro ETL comes to the rescue. 
+## Requirements 
+- ETL process to match this target data model - https://dbdiagram.io/d/62268eff61d06e6eadbc43bc
+  - Given the limited time, I completed the normalization of data in the file using lambda for tables user, user_profile, role_profile and role_profile_type, with the understanding that these could be extended for the remaining tables in the data model. 
+  - The reason I chose lambda is because the file is small in size. Depending on the use case, I would recommend a different solution.
+  - I scheduled the lambda to run every 15 minutes (an assumption). Again, depending on the use case my answer changes.
+  - I made some assumptions about what could go in some of the incrementing primary keys given the limited scope and time as well as certain columns like updated, updated by and created, created_by.
+  - I stored the resulting dataframes for these tables as CSV files in separate S3 buckets, so that it would be easier to connect with Athena for querying and AWS Glue for ETL to conform to any constraints or tranformations that may be necessary.
+  
 
 
-## Contributing 
 
-See CONTRIBUTING file.
+## AWS Free Tier offerings used:
+- AWS S3: for data lake to Athena pipeline
+- AWS Lambda: for micro-ETL
+- AWS SAM: for building the environment, and scheduling the Lambda handler
+- AWS Athena: to query resulting CSVs
+- AWS Glue: just to test out insertions into tables
+
+
 
 ## License
 
