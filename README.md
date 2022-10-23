@@ -8,7 +8,7 @@
   - The reason I chose lambda is because the file is small in size. Depending on the use case, I would recommend a different solution.
   - I scheduled the lambda to run every 15 minutes (an assumption). Again, depending on the use case my answer changes.
   - I made some assumptions about what could go in some of the incrementing primary keys given the limited scope and time as well as certain columns like updated, updated by and created, created_by.
-  - [Code](aws_micro_etl_sample.ipynb)I stored the resulting dataframes for these tables as CSV files in separate S3 buckets, so that it would be easier to connect with Athena for querying and AWS Glue for ETL to conform to any constraints or tranformations that may be necessary.
+  - [Code](aws_micro_etl_sample.ipynb): I stored the resulting dataframes for these tables as CSV files in separate S3 buckets, so that it would be easier to connect with Athena for querying and AWS Glue for ETL to conform to any constraints or tranformations that may be necessary.
   
 - [Diagram](Kriti-Aspen-capital.png)
 
