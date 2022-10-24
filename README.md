@@ -26,12 +26,12 @@
 To review these, I am happy to share my screen during the interview or provide access to specific people on an ad-hoc basis. Currently, I have deleted some of the resources (such as the cloud formation stack) to avoid accidentally incurring charges, but I can deploy them to demonstrate my understanding again. 
 
 #### Challenges:
-- Converting the Excel file to CSV in AWS Lambda (it does not natively support openpyxl or pandas) to make them readable by Athena and Glue.
+- Converting the Excel file to CSV in AWS Lambda (since it does not natively support openpyxl or pandas) to make them query-able by Athena and Glue.
 - I also avoided using anything that does not come for free with the free tier (such as RDS instances), and had to find workarounds for that.
 
 ## Recommended solution for database migration from on prem:
-My code works for any excel files uploaded to S3 and ETLed at intervals. Since I had a static file, I took these liberties to implement a solution for the data the way I see fit. But since the source database is hosted on an SQL Server instance and not a few Excel files, my code is not the solution for the migration task at hand. 
-I recommend using AWS Database Migration Service to migrate to RDS, which the team may already be considering.
+My code works for any excel files uploaded to S3 and ETLed at intervals. Since I had a static file, I took these liberties to implement a solution for the data the way I see fit. But because the source database is hosted on an SQL Server instance and not a few Excel files, my code is not the solution for the migration task at hand. 
+I recommend using AWS Database Migration Service to migrate to RDS.
 
 For this we would need to:
 1. Create an SQL Server Database Instance in Amazon RDS.
