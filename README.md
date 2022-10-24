@@ -1,12 +1,15 @@
 # AWS Micro ETL pipeline
-
+Below are my answers for the questions asked:
+-I have completed the design, and functioning code for the Excel file provided to me, both can be found below in **Loading Excel file section**.
+  - The code and diagram for the same is linked in the section.
+-I have also described, at a high level, how the on-prem and AWS databases maybe synced during the migration in the **Recommended solution for database migration from on prem**.
 
 
 ## Loading Excel file 
 - Design:
   - Given the limited time, I completed the normalization of data in the file using lambda for tables user, user_profile, role_profile and role_profile_type, with the understanding that these could be extended for the remaining tables in the data model. 
-  - The reason I chose lambda is because the file is small in size. Depending on the size and set up, I would recommend a different solution.
-  - I scheduled the lambda to [run every 15 minutes](micro-etl-app/template.yml) (an assumption). Again, depending on the use case my answer changes.
+  - The reason I chose lambda is because the file is small (1k rows) in size. Depending on the size and set up, I would recommend a different solution as I have for the SQL Server migration.
+  - I scheduled the lambda to [run every 15 minutes](micro-etl-app/template.yml). Again, this depends on the use case.
   - I made some assumptions about what could go in some of the incrementing primary keys given the limited scope and time as well as certain columns like updated, updated by and created, created_by.
   - I stored the resulting dataframes for these tables as CSV files in separate S3 buckets, so that it would be easier to connect with Athena for querying and AWS Glue for ETL to conform to any constraints or tranformations that may be necessary.
   
